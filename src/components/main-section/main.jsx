@@ -1,10 +1,11 @@
 import Card from '../card/Card.jsx';
+import Form from '../form/Form.jsx';
 import style from './main.module.css';
 import { posts } from '../../data/posts.js';
 import { useState } from 'react';
 
 function Main() {
-  const [titleInput, setTitleInput] = useState('');
+  // const [titleInput, setTitleInput] = useState('');
   const [newPosts, setNewPosts] = useState(posts);
   const [addedList, setAddedList] = useState([]);
 
@@ -13,15 +14,15 @@ function Main() {
   //id da inserire ad ogni elemento aggiunto
   let nextId = newPosts.length + 1;
 
-  function newTitle(e) {
-    setTitleInput(e.target.value);
-    // console.log(titleInput);
-  }
+  // function newTitle(e) {
+  //   setTitleInput(e.target.value);
 
-  function addNewElement() {
+  // }
+
+  function addNewElement(title) {
     const newElement = {
       id: nextId,
-      title: titleInput,
+      title,
       published: true,
     };
 
@@ -34,8 +35,6 @@ function Main() {
     setNewPosts(newPosts.filter((post) => post.id !== id));
     setAddedList(addedList.filter((post) => post.id !== id));
   }
-
-  console.log(newPosts);
 
   // console.log(titleInput);
   return (
@@ -55,19 +54,20 @@ function Main() {
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <form onSubmit={(e) => e.preventDefault()} className={style.form}>
+            <Form add={addNewElement} />
+            {/* <form onSubmit={(e) => e.preventDefault()} className={style.form}>
               <h3>Aggiungi un nuovo post</h3>
               <label className={style.label} htmlFor="new-title">
                 <span className={style.input_title}>Titolo:</span>
                 <input onChange={newTitle} className={style.input} name="new-title" type="text" placeholder="Inserisci il nuovo titolo" value={titleInput} />
               </label>
               <div className="btn_wrap">
-                {/* add */}
                 <button onClick={addNewElement} className={style.add_btn}>
                   Add
                 </button>
               </div>
-
+            </form> */}
+            <section className="added_elements_section">
               <div className="col-12">
                 <ul className={style.added_list}>
                   {addedList &&
@@ -85,7 +85,7 @@ function Main() {
                     ))}
                 </ul>
               </div>
-            </form>
+            </section>
           </div>
         </div>
       </div>
