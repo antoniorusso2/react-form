@@ -14,6 +14,18 @@ function Main() {
     // console.log(titleInput);
   }
 
+  function addNewElement() {
+    setNewPosts([
+      ...newPosts,
+      {
+        title: titleInput,
+        published: true,
+      },
+    ]);
+  }
+
+  console.log(newPosts);
+
   // console.log(titleInput);
   return (
     <main className={style.main}>
@@ -38,7 +50,9 @@ function Main() {
                 <span className={style.input_title}>Titolo:</span>
                 <input onChange={newTitle} className={style.input} name="new-title" type="text" placeholder="Inserisci il nuovo titolo" value={titleInput} />
               </label>
-              <button className={style.add_btn}>Add</button>
+              <button onClick={addNewElement} className={style.add_btn}>
+                Add
+              </button>
             </form>
           </div>
         </div>
