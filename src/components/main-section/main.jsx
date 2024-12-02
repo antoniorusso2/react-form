@@ -4,17 +4,17 @@ import { posts } from '../../data/posts.js';
 import { useState } from 'react';
 
 function Main() {
-  const [title, setTitle] = useState('');
+  const [titleInput, setTitleInput] = useState('');
   const [newPosts, setNewPosts] = useState(posts);
 
   const publishedPosts = newPosts.filter((post) => post.published);
 
   function newTitle(e) {
-    // e.preventDefault();
-    // console.log(title);
-    setTitle(e.target.value);
+    setTitleInput(e.target.value);
+    // console.log(titleInput);
   }
 
+  // console.log(titleInput);
   return (
     <main className={style.main}>
       <div className="container">
@@ -36,7 +36,7 @@ function Main() {
               <h3>Aggiungi un nuovo post</h3>
               <label className={style.label} htmlFor="new-title">
                 <span className={style.input_title}>Titolo:</span>
-                <input onChange={newTitle} className={style.input} name="new-title" type="text" placeholder="Inserisci il nuovo titolo" value={title} />
+                <input onChange={newTitle} className={style.input} name="new-title" type="text" placeholder="Inserisci il nuovo titolo" value={titleInput} />
               </label>
               <button className={style.add_btn}>Add</button>
             </form>
