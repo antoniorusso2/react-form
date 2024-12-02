@@ -7,3 +7,29 @@
   text-align: center;
   margin: 2rem 0;
 }
+
+.form {
+  margin: 1.2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.label {
+  margin: 1rem;
+}
+
+.input_title {
+  margin-right: 1.2rem;
+  font-size: 0.8rem;
+}
+
+.add_btn {
+  background-color: chartreuse;
+  line-height: 2rem;
+  padding: 0 2rem;
+  border-radius: 0.5rem;
+  color: white;
+  cursor: pointer;
+}

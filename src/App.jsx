@@ -1,4 +1,4 @@
-import Main from './components/main-section/main.jsx';
+import Main from './components/main-section/Main.jsx';
 import Footer from './components/footer-section/footer.jsx';
 
 function App() {
