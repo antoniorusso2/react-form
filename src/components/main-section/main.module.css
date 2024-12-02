@@ -11,9 +11,14 @@
 .form {
   margin: 1.2rem 0;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+}
+
+.form > h3 {
+  flex-basis: 100%;
+  text-align: center;
 }
 
 .label {
@@ -24,12 +29,29 @@
   margin-right: 1.2rem;
   font-size: 0.8rem;
 }
-
-.add_btn {
-  background-color: chartreuse;
-  line-height: 2rem;
-  padding: 0 2rem;
+.add_btn,
+.delete_btn {
+  margin: 1rem;
+  color: rgb(245, 245, 245);
+  width: 100px;
   border-radius: 0.5rem;
-  color: white;
-  cursor: pointer;
+}
+.add_btn {
+  background-color: #2c2c34;
+  font-weight: 500;
+}
+
+.delete_btn {
+  background-color: #978897;
+}
+
+.new_el {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.new_el {
+  flex-basis: 100%;
 }

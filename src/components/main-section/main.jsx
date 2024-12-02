@@ -6,8 +6,12 @@ import { useState } from 'react';
 function Main() {
   const [titleInput, setTitleInput] = useState('');
   const [newPosts, setNewPosts] = useState(posts);
+  const [addedList, setAddedList] = useState([]);
 
   const publishedPosts = newPosts.filter((post) => post.published);
+
+  //id da inserire ad ogni elemento aggiunto
+  let nextId = newPosts.length + 1;
 
   function newTitle(e) {
     setTitleInput(e.target.value);
@@ -15,13 +19,20 @@ function Main() {
   }
 
   function addNewElement() {
-    setNewPosts([
-      ...newPosts,
-      {
-        title: titleInput,
-        published: true,
-      },
-    ]);
+    const newElement = {
+      id: nextId,
+      title: titleInput,
+      published: true,
+    };
+
+    setNewPosts([...newPosts, newElement]);
+
+    setAddedList([...addedList, newElement]);
+  }
+
+  function deletePost(id) {
+    setNewPosts(newPosts.filter((post) => post.id !== id));
+    setAddedList(addedList.filter((post) => post.id !== id));
   }
 
   console.log(newPosts);
@@ -43,16 +54,37 @@ function Main() {
       </div>
       <div className="container">
         <div className="row">
-          <div className="col">
+          <div className="col-12">
             <form onSubmit={(e) => e.preventDefault()} className={style.form}>
               <h3>Aggiungi un nuovo post</h3>
               <label className={style.label} htmlFor="new-title">
                 <span className={style.input_title}>Titolo:</span>
                 <input onChange={newTitle} className={style.input} name="new-title" type="text" placeholder="Inserisci il nuovo titolo" value={titleInput} />
               </label>
-              <button onClick={addNewElement} className={style.add_btn}>
-                Add
-              </button>
+              <div className="btn_wrap">
+                {/* add */}
+                <button onClick={addNewElement} className={style.add_btn}>
+                  Add
+                </button>
+              </div>
+
+              <div className="col-12">
+                <ul className={style.added_list}>
+                  {addedList &&
+                    addedList.map((el) => (
+                      <li key={el.id} className={style.new_el}>
+                        {' '}
+                        <p>
+                          <strong>Hai aggiunto:</strong> {el.title}
+                        </p>
+                        {/* delete */}
+                        <button onClick={() => deletePost(el.id)} className={style.delete_btn}>
+                          Delete
+                        </button>
+                      </li>
+                    ))}
+                </ul>
+              </div>
             </form>
           </div>
         </div>
