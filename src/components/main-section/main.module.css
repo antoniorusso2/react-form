@@ -1,0 +1,9 @@
+.main {
+  margin-bottom: 5rem;
+  flex-grow: 1;
+}
+
+.title {
+  text-align: center;
+  margin: 2rem 0;
+}
